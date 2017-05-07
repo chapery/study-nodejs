@@ -1,2 +1,11 @@
-var foo = require('./lib/foo');
-foo('这是自定义模块');
+// import foo from './lib/foo'
+
+import fs from 'fs'
+import process from 'process'
+
+
+fs.exists('./src/test.text', exists => {
+	console.log(exists)
+})
+
+console.log(fs.existsSync)
