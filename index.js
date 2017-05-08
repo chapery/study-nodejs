@@ -2,10 +2,10 @@
 
 import fs from 'fs'
 import process from 'process'
+import path from 'path'
 
+const src = './src/'
 
-fs.exists('./src/test.text', exists => {
-	console.log(exists)
-})
+let test = path.relative('E:\\wamp\\www\\github\\study-nodejs\\src\\test.txt', 'E:\\wamp\\www\\github\\study-nodejs\\lib\\foo.js')
 
-console.log(fs.existsSync)
+console.log(test)
