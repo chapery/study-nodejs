@@ -1,33 +1,8 @@
-// import foo from './lib/foo'
 
-import fs from 'fs'
-import path from 'path'
+const arr = new Uint8Array(2)
 
+arr[0] = 10
 
-let sourceDir = './src/'
-let ext = '.html'
-let targetFiles = []
-let list = ''
+const buf1 = Buffer.from(arr)
 
-targetFiles = fs.readdirSync(sourceDir).filter(item => /\.html$/.test(item))
-
-targetFiles.forEach((item) => {
-	list += `<li><a href="${path.join(sourceDir, item)}">${item}</a></li>`
-})
-
-let temp = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8"/>
-	<title>index</title>
-</head>
-<body>
-<ul>
-${list}
-</ul>
-</body>
-</html>
-`
-
-fs.writeFile('./index.html', temp)
+console.log(buf1)
