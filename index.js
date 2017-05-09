@@ -1,15 +1,33 @@
 // import foo from './lib/foo'
 
+import fs from 'fs'
+import path from 'path'
 
-let bytes = new Buffer('hello')
 
-let str = JSON.stringify(bytes)
+let sourceDir = './src/'
+let ext = '.html'
+let targetFiles = []
+let list = ''
 
-let copy = new Buffer(JSON.parse(str))
+targetFiles = fs.readdirSync(sourceDir).filter(item => /\.html$/.test(item))
 
-let json = `{
-	"type":"Buffer",
-	"data":[65,66,67]
-}`
+targetFiles.forEach((item) => {
+	list += `<li><a href="${path.join(sourceDir, item)}">${item}</a></li>`
+})
 
-console.log(new Buffer(JSON.parse(json)))
+let temp = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>index</title>
+</head>
+<body>
+<ul>
+${list}
+</ul>
+</body>
+</html>
+`
+
+fs.writeFile('./index.html', temp)
