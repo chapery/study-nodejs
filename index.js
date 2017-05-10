@@ -1,8 +1,10 @@
+// import fileindex from './lib/fileindex'
 
-const arr = new Uint8Array(2)
+const buf1 = Buffer.from('A')
+const buf2 = Buffer.from('a')
 
-arr[0] = 10
+const result = Buffer.compare(buf1, buf2)
 
-const buf1 = Buffer.from(arr)
+const arr = [buf1, buf2]
 
-console.log(buf1)
+console.log(arr.sort(Buffer.compare))
